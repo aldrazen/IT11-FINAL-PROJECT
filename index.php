@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="styles/header.css">
   <link rel="stylesheet" href="styles/content.css">
 </head>
-</head>
 
 <body>
   <nav class="navbar navbar-expand-md">
