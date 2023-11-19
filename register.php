@@ -48,28 +48,30 @@
             </div>
             <div class="col-lg-4">
               <h1 class="my-5" style="color: rgb(199, 131, 5); font-weight: bold;">Create New Account</h1>
-              <form>
+               <form action="register_add.php" method="post">
                 <div class="form-outline mb-3">
                   <label for="id" class="form-label">School ID</label>
-                  <input type="number" class="form-control rounded-5" id="id" required>
+                  <input type="number" class="form-control rounded-5" name="id" id="id" required>
                 </div>
                 <div class="form-outline mb-3">
                   <label for="email" class="form-label">University Email</label>
-                  <input type="email" class="form-control rounded-5" id="email" required>
+                  <input type="email" class="form-control rounded-5" name="email" id="email" required>
                 </div>
                 <div class="form-outline mb-3">
                   <label for="mobile-number" class="form-label">Mobile number</label>
-                  <input type="number" class="form-control rounded-5" id="mobile-number" required>
+                  <input type="number" class="form-control rounded-5" name="mobile-number" id="mobile-number" required>
                 </div>
                 <div class="form-outline mb-5">
                   <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control rounded-5" id="password" required>
+                  <input type="password" class="form-control rounded-5" name="password" id="password" required>
+                </div>
+                   <div class="d-grid">
+                  <button type="submit" class="btn btn-lg rounded-5" style="color: white; background-color: rgb(199, 131, 5);">
+                    Sign up
+                  </button>
                 </div>
               </form>
-              <div class="d-grid">
-                <button type="submit" class="btn btn-lg rounded-5"
-                  style="color: white; background-color: rgb(199, 131, 5);">Sign up</button>
-              </div>
+
               <div class=" mt-2 d-flex justify-content-center">
                 <p style="color: white;">Already Registerd?<a href="login.php"
                     style="color: white; font-weight: bold; margin-left: 5px;"><i>Login</i></a></p>

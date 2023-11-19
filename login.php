@@ -1,3 +1,26 @@
+<?php
+session_start();
+include("db_connection.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $student_id = isset($_POST["id"]) ? $_POST["id"] : "";
+    $student_password = isset($_POST["password"]) ? $_POST["password"] : "";
+
+    $query = "SELECT student_id FROM tbl_student WHERE student_id = '$student_id' AND student_password = '$student_password'";
+    $result = mysqli_query($connection, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $_SESSION["user_id"] = $student_id;
+        header("Location: home.php"); 
+        exit();
+    } else {
+        echo "Invalid credentials. Please try again.";
+    }
+
+    mysqli_close($connection);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +60,7 @@
       </div>
     </div>
   </nav>
-  <main>
+   <main>
     <div class="bg-img" id="img-bg">
       <div class="d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.50);">
         <div class="container">
@@ -48,19 +71,20 @@
             </div>
             <div class="col-lg-4">
               <h1 class="mt-sm-4" style="color: rgb(199, 131, 5); font-weight: bold;">Welcome back, Ga!</h1>
-              <form>
+              <form method="post" action="login.php">
                 <div class="form-outline">
                   <label for="id" class="form-label px-2 mt-4">School ID</label>
-                  <input type="number" class="form-control rounded-5" id="id" required>
+                  <input type="number" class="form-control rounded-5" id="id" name="id" required>
                   <div class="form-outline mt-2">
                     <label for="password" class="form-label px-2">Password</label>
-                    <input type="password" class="form-control rounded-5" id="password" required>
+                    <input type="password" class="form-control rounded-5" id="password" name="password" required>
                   </div>
+                </div>
+                <div class="d-grid mt-5">
+                  <button type="submit" class="btn btn-lg rounded-5"
+                    style="color: white; background-color: rgb(199, 131, 5);">Login</button>
+                </div>
               </form>
-              <div class="d-grid mt-5">
-                <button type="submit" class="btn btn-lg rounded-5"
-                  style="color: white; background-color: rgb(199, 131, 5);">Login</button>
-              </div>
               <div class=" mt-2 d-flex justify-content-center">
                 <p style="color: white;">Dont't have an account?<a href="register.php"
                     style="color: white; font-weight: bold; margin-left: 5px;"><i>Register</i></a></p>
