@@ -1,0 +1,27 @@
+body{
+  background-color: #DAD8D6;
+}
+.btn-light{
+  border-radius: 5px;
+}
+.card-subtitle,.card-title{
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: white;
+}
+.info1,.info2{
+  font-size: 18px;
+  color: #63472b;
+  font-weight: 500;
+}
+.form-label{
+  color: white;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+#img-bg{
+  background-image: url(../images/dpt.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 90vh;
+}
