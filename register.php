@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
+  <title>UMConnect Register</title>
   <link rel="icon" type="images/x-icon" href="icons/University_of_Mindanao_Logo.png">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -24,6 +24,9 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
         <ul class="navbar-nav d-flex flex-row flex-wrap pt-2 py-md-0">
           <li class="nav-item col-6 col-md-auto">
+            <a href="index.php" class="nav-link p-3">Home</a>
+          </li>
+          <li class="nav-item col-6 col-md-auto">
             <a href="https://umindanao.edu.ph/" target="_blank" class="nav-link p-3">UMindanao</a>
           </li>
           <li class="nav-item col-6 col-md-auto">
@@ -41,41 +44,64 @@
     <div class="bg-img" id="img-bg">
       <div class="d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.50);">
         <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-8 mt-lg-5">
-              <p class="card-title display-1 mt-lg-5 mb-0">UMconnect</p>
+          <div class="row">
+            <div class="col-lg-6 mt-5">
+              <p class="card-title display-1 mt-5 mb-0">UMconnect</p>
               <p class="card-subtitle">Join us shaping a more informed and connected campus community today.</p>
             </div>
-            <div class="col-lg-4">
-              <h1 class="my-5" style="color: rgb(199, 131, 5); font-weight: bold;">Create New Account</h1>
-               <form action="register_add.php" method="post">
-                <div class="form-outline mb-3">
-                  <label for="id" class="form-label">School ID</label>
-                  <input type="number" class="form-control rounded-5" name="id" id="id" required>
-                </div>
-                <div class="form-outline mb-3">
-                  <label for="email" class="form-label">University Email</label>
-                  <input type="email" class="form-control rounded-5" name="email" id="email" required>
-                </div>
-                <div class="form-outline mb-3">
-                  <label for="mobile-number" class="form-label">Mobile number</label>
-                  <input type="number" class="form-control rounded-5" name="mobile-number" id="mobile-number" required>
-                </div>
-                <div class="form-outline mb-5">
-                  <label for="password" class="form-label">Password</label>
-                  <input type="password" class="form-control rounded-5" name="password" id="password" required>
-                </div>
-                   <div class="d-grid">
-                  <button type="submit" class="btn btn-lg rounded-5" style="color: white; background-color: rgb(199, 131, 5);">
-                    Sign up
-                  </button>
+            <div class="col-lg-6">
+              <form action="register_db.php" method="POST">
+                <div class="row">
+                  <h1 class="my-5" style="color: rgb(199, 131, 5); font-weight: bold;">Create New Account</h1>
+                  <div class="col">
+                    <div class="form-outline mb-3">
+                      <label for="first_name" class="form-label">First name</label>
+                      <input type="text" class="form-control rounded-5" name="first_name" id="first_name" required>
+                    </div>
+                    <div class="form-outline mb-3">
+                      <label for="id" class="form-label">Student ID</label>
+                      <input type="number" class="form-control rounded-5" name="id" id="id" required>
+                    </div>
+                    <div class="form-outline mb-3">
+                      <label for="course" class="form-label">Course</label>
+                      <input type="text" class="form-control rounded-5" name="course" id="course" required>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label for="contact_number" class="form-label">Contact number</label>
+                      <input type="number" class="form-control rounded-5" name="contact_number" id="contact_number"
+                        required>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-outline mb-3">
+                      <label for="last_name" class="form-label">Last name</label>
+                      <input type="text" class="form-control rounded-5" name="last_name" id="last_name" required>
+                    </div>
+                    <div class="form-outline mb-3">
+                      <label for="email" class="form-label">University Email</label>
+                      <input type="email" class="form-control rounded-5" name="email" id="email" required>
+                    </div>
+                    <div class="form-outline mb-3">
+                      <label for="year_level" class="form-label">Year level</label>
+                      <input type="number" class="form-control rounded-5" name="year_level" id="year_level" required>
+                    </div>
+                    <div class="form-outline mb-4">
+                      <label for="password" class="form-label">Password</label>
+                      <input type="password" class="form-control rounded-5" name="password" id="password" required>
+                    </div>
+                  </div>
+                  <div class="d-grid px-5">
+                    <button type="submit" name="submit" class="btn btn-lg rounded-5"
+                      style="color: white; background-color: rgb(199, 131, 5);">
+                      Sign up
+                    </button>
+                  </div>
+                  <div class=" mt-2 d-flex justify-content-center">
+                    <p style="color: white;">Already Registerd?<a href="index.php"
+                        style="color: white; font-weight: bold; margin-left: 5px;"><i>Login</i></a></p>
+                  </div>
                 </div>
               </form>
-
-              <div class=" mt-2 d-flex justify-content-center">
-                <p style="color: white;">Already Registerd?<a href="login.php"
-                    style="color: white; font-weight: bold; margin-left: 5px;"><i>Login</i></a></p>
-              </div>
             </div>
           </div>
         </div>

@@ -23,5 +23,24 @@ body{
   background-image: url(../images/dpt.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 92vh;
+}
+.error {
+  background: #ce3131;
+  color: #ffffff;
+  padding: 5px;
+  width: 340px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.success {
+  background: #0fc709;
+  color: #ffffff;
+  padding: 5px;
+  width: 340px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
 }

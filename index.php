@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UMconnect</title>
+  <title>UMConnect Login</title>
   <link rel="icon" type="images/x-icon" href="icons/University_of_Mindanao_Logo.png">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -24,54 +24,58 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
         <ul class="navbar-nav d-flex flex-row flex-wrap pt-2 py-md-0">
           <li class="nav-item col-6 col-md-auto">
-            <a href="https://umindanao.edu.ph/" target="_blank" class="nav-link px-3">UMindanao</a>
+            <a href="index.php" class="nav-link p-3">Home</a>
+          </li>
+          <li class="nav-item col-6 col-md-auto">
+            <a href="https://umindanao.edu.ph/" target="_blank" class="nav-link p-3">UMindanao</a>
           </li>
           <li class="nav-item col-6 col-md-auto">
             <a href="https://umindanao.blackboard.com/?new_loc=%2Fultra%2Fcourse" target="_blank"
-              class="nav-link px-3">Blackboard</a>
+              class="nav-link p-3">Blackboard</a>
           </li>
           <li class="nav-item col-6 col-md-auto">
-            <a href="https://student.umindanao.edu.ph/login" target="_blank" class="nav-link px-3">Student Portal</a>
-          </li>
-          <li class="nav-item col-6 col-md-auto">
-            <a href="login.php" class="nav-link px-3">Login</a>
+            <a href="https://student.umindanao.edu.ph/login" target="_blank" class="nav-link p-3">Student Portal</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container-fluid p-0">
-      <div class="card text-bg-dark">
-        <div class="card-img-overlay d-flex flex-column align-items-center justify-content-around h-100">
-          <p class="card-subtitle text-uppercase mb-0" style="letter-spacing: 8px">WELCOME TO</p>
-          <p class="card-title display-1 mb-0">UMconnect</p>
-          <a class="btn btn-light " role="button" href="#info" style="letter-spacing: 5px;">LEARN MORE</a>
-        </div>
-        <img src="images/dpt.jpg" class="card-img h-100" alt="">
-      </div>
-    </div>
-    <div class="container-xxl mt-5" id="info">
-      <div class="row">
-        <div class="col-lg-6 my-md-5">
-          <h1 style="color: #A2464B;">STAY IN THE KNOW, <br>ON THE GO!</h1>
-          <p class="mt-5 text-xl-start info1">Welcome to UMconnect, where announcements find you. Join us and never miss
-            a beat in your university life. Register, relax, and let the updates come to you!</p>
-          <p class="mt-5 text-xl-start info2">UMconnect is a user-friendly online platform designed to enhance
-            communication and connectivity within your university community. It serves as a central hub for students to
-            register their email and cellphone numbers, enabling the university to deliver important announcements and
-            updates directly to their mobile devices. With UMconnect, staying informed about campus events, news, and
-            academic matters has never been easier. Our mission is to streamline the flow of essential information,
-            ensuring that students are always in the know and well-connected with the institution.</p>
-        </div>
-        <div class="col-lg-6 my-lg-5">
-          <img class="img-thumbnail h-100 w-100" src="images/2016-07-12.jpg">
+    <div class="bg-img" id="img-bg">
+      <div class="d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.50);">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-8 mt-5">
+              <p class="card-title display-1 mb-0">UMconnect</p>
+              <p class="card-subtitle">Join us shaping a more informed and connected campus community today.</p>
+            </div>
+            <div class="col-lg-4">
+              <h1 class="mt-sm-4" style="color: rgb(199, 131, 5); font-weight: bold;">Welcome back, Ga!</h1>
+              <form action="login_db.php" method="POST">
+                <div class="form-outline">
+                  <label for="id" class="form-label px-2 mt-4">School ID</label>
+                  <input type="number" class="form-control rounded-5" name="id" id="id" required>
+                  <div class="form-outline mt-2">
+                    <label for="password" class="form-label px-2 mt-3">Password</label>
+                    <input type="password" class="form-control rounded-5" name="password" id="password" required>
+                  </div>
+                  <div class="d-grid mt-5">
+                    <button type="submit" name="submit" class="btn btn-lg rounded-5"
+                      style="color: white; background-color: rgb(199, 131, 5);">Login</button>
+                  </div>
+                  <div class=" mt-2 d-flex justify-content-center">
+                    <p style="color: white;">Dont't have an account?<a href="register.php"
+                        style="color: white; font-weight: bold; margin-left: 5px;"><i>Register</i></a></p>
+                  </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </main>
 
-  <footer class="text-light py-5 mt-5" style="background: #610600;">
+  <footer class="text-light py-5" style="background: #610600;">
     <div class="container">
 
       <div class="row mb-2">

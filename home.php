@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(isset($_SESSION['student_id'])){
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,8 +39,8 @@
           </li>
           <li class="col col-md-auto d-flex">
             <div class="nav-link navbar-text p-3">
-              Welcome, Marianne Lou!
-              <span> <a href="" style="color: #be1206">Logout?</a></span>
+              Welcome, <?php echo $_SESSION['student_fname']?>
+              <span> <a href="session/logout.php" style="color: #be1206">logout?</a></span>
             </div>
           </li>
         </ul>
@@ -129,3 +133,8 @@
 <script src="js/bootstrap.js"></script>
 
 </html>
+<?php
+}else{
+  header("Location: index.php");
+}
+?>
