@@ -9,17 +9,17 @@ if(isset($_SESSION['student_id'])){
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="icon" type="images/x-icon" href="icons/University_of_Mindanao_Logo.png">
-  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="icon" type="images/x-icon" href="../icons/University_of_Mindanao_Logo.png">
+  <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/header.css">
-  <link rel="stylesheet" href="styles/content.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/content.css">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-md">
     <div class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main Navigation">
-      <a href="home.php" class="navbar-brand p-2 me-2"><img class="um-logo" src="icons/logo-transparent.png"
+      <a href="home.php" class="navbar-brand p-2 me-2"><img class="um-logo" src="../icons/logo-transparent.png"
           alt="Logo" /></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,8 +39,8 @@ if(isset($_SESSION['student_id'])){
           </li>
           <li class="col col-md-auto d-flex">
             <div class="nav-link navbar-text p-3">
-              Welcome, <?php echo $_SESSION['student_fname']?>
-              <span> <a href="session/logout.php" style="color: #be1206">logout?</a></span>
+              Welcome, <?php echo $_SESSION['student_fname']?>!
+              <span> <a href="../session/logout.php" style="color: #be1206">logout?</a></span>
             </div>
           </li>
         </ul>
@@ -84,7 +84,7 @@ if(isset($_SESSION['student_id'])){
       <div class="row mb-2">
         <div class="col-lg-6">
           <h5 class="" style="font-size: 30px;">
-            <img src="icons/footer-logo.png" alt="disaster logo" style="height: 60px;">
+            <img src="../icons/footer-logo.png" alt="disaster logo" style="height: 60px;">
             UMconnect
           </h5>
           <div class="bi bi-geo-alt-fill mt-4"><span style="margin-left: 10px; font-weight: bold;">DAVAO CITY 800, Davao
@@ -130,7 +130,7 @@ if(isset($_SESSION['student_id'])){
     </div>
   </div>
 </body>
-<script src="js/bootstrap.js"></script>
+<script src="../Bootstrap/js/bootstrap.js"></script>
 
 </html>
 <?php

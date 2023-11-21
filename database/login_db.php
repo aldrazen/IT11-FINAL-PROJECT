@@ -17,11 +17,11 @@ if (isset($_POST['id']) && isset($_POST['password'])) {
         header("Location: home.php");
       } else { 
         echo 
-        "<script>alert('Your password is incorrect.'); window.location.href = 'login.php';</script>";
+        "<script>alert('Your password is incorrect.'); window.location.href = '../user/index.php';</script>";
       }
     } else { 
         echo 
-        "<script>alert('Account not registered.'); window.location.href = 'login.php';</script>";
+        "<script>alert('Account not registered.'); window.location.href = '../user/index.php';</script>";
       }
 } else {
     header("Location: index.php");

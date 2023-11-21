@@ -4,18 +4,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UMConnect Register</title>
-  <link rel="icon" type="images/x-icon" href="icons/University_of_Mindanao_Logo.png">
-  <link rel="stylesheet" href="css/bootstrap.css">
+  <title>UMConnect</title>
+  <link rel="icon" type="images/x-icon" href="../icons/University_of_Mindanao_Logo.png">
+  <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/header.css">
-  <link rel="stylesheet" href="styles/content.css">
+  <link rel="stylesheet" href="../styles/header.css">
+  <link rel="stylesheet" href="../styles/content.css">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-md">
     <div class="container-xxl flex-wrap flex-md-nowrap" aria-label="Main Navigation">
-      <a href="index.php" class="navbar-brand p-2 me-2"><img class="um-logo" src="icons/logo-transparent.png"
+      <a href="index.php" class="navbar-brand p-2 me-2"><img class="um-logo" src="../icons/logo-transparent.png"
           alt="Logo" /></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
         aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,9 +23,6 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
         <ul class="navbar-nav d-flex flex-row flex-wrap pt-2 py-md-0">
-          <li class="nav-item col-6 col-md-auto">
-            <a href="index.php" class="nav-link p-3">Home</a>
-          </li>
           <li class="nav-item col-6 col-md-auto">
             <a href="https://umindanao.edu.ph/" target="_blank" class="nav-link p-3">UMindanao</a>
           </li>
@@ -44,63 +41,29 @@
     <div class="bg-img" id="img-bg">
       <div class="d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.50);">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-6 mt-5">
-              <p class="card-title display-1 mt-5 mb-0">UMconnect</p>
+          <div class="row justify-content-center">
+            <div class="col-lg-8 mt-lg-5">
+              <p class="card-title display-1 mb-0">UMconnect</p>
               <p class="card-subtitle">Join us shaping a more informed and connected campus community today.</p>
             </div>
-            <div class="col-lg-6">
-              <form action="register_db.php" method="POST">
-                <div class="row">
-                  <h1 class="my-5" style="color: rgb(199, 131, 5); font-weight: bold;">Create New Account</h1>
-                  <div class="col">
-                    <div class="form-outline mb-3">
-                      <label for="first_name" class="form-label">First name</label>
-                      <input type="text" class="form-control rounded-5" name="first_name" id="first_name" required>
-                    </div>
-                    <div class="form-outline mb-3">
-                      <label for="id" class="form-label">Student ID</label>
-                      <input type="number" class="form-control rounded-5" name="id" id="id" required>
-                    </div>
-                    <div class="form-outline mb-3">
-                      <label for="course" class="form-label">Course</label>
-                      <input type="text" class="form-control rounded-5" name="course" id="course" required>
-                    </div>
-                    <div class="form-outline mb-4">
-                      <label for="contact_number" class="form-label">Contact number</label>
-                      <input type="number" class="form-control rounded-5" name="contact_number" id="contact_number"
-                        required>
-                    </div>
+            <div class="col-lg-4">
+              <h1 class="mt-sm-4" style="color: rgb(199, 131, 5); font-weight: bold;">Welcome back, Ga!</h1>
+              <form action="../database/login_db.php" method="POST">
+                <div class="form-outline">
+                  <label for="id" class="form-label px-2 mt-3">School ID</label>
+                  <input type="number" class="form-control rounded-5" name="id" id="id" required>
+                  <div class="form-outline mt-2">
+                    <label for="password" class="form-label px-2 mt-3">Password</label>
+                    <input type="password" class="form-control rounded-5" name="password" id="password" required>
                   </div>
-                  <div class="col">
-                    <div class="form-outline mb-3">
-                      <label for="last_name" class="form-label">Last name</label>
-                      <input type="text" class="form-control rounded-5" name="last_name" id="last_name" required>
-                    </div>
-                    <div class="form-outline mb-3">
-                      <label for="email" class="form-label">University Email</label>
-                      <input type="email" class="form-control rounded-5" name="email" id="email" required>
-                    </div>
-                    <div class="form-outline mb-3">
-                      <label for="year_level" class="form-label">Year level</label>
-                      <input type="number" class="form-control rounded-5" name="year_level" id="year_level" required>
-                    </div>
-                    <div class="form-outline mb-4">
-                      <label for="password" class="form-label">Password</label>
-                      <input type="password" class="form-control rounded-5" name="password" id="password" required>
-                    </div>
-                  </div>
-                  <div class="d-grid px-5">
+                  <div class="d-grid mt-5">
                     <button type="submit" name="submit" class="btn btn-lg rounded-5"
-                      style="color: white; background-color: rgb(199, 131, 5);">
-                      Sign up
-                    </button>
+                      style="color: white; background-color: rgb(199, 131, 5);">Login</button>
                   </div>
                   <div class=" mt-2 d-flex justify-content-center">
-                    <p style="color: white;">Already Registerd?<a href="index.php"
-                        style="color: white; font-weight: bold; margin-left: 5px;"><i>Login</i></a></p>
+                    <p style="color: white;">Dont't have an account?<a href="register.php"
+                        style="color: white; font-weight: bold; margin-left: 5px;"><i>Register</i></a></p>
                   </div>
-                </div>
               </form>
             </div>
           </div>
@@ -115,7 +78,7 @@
       <div class="row mb-2">
         <div class="col-lg-6">
           <h5 class="" style="font-size: 30px;">
-            <img src="icons/footer-logo.png" alt="disaster logo" style="height: 60px;">
+            <img src="../icons/footer-logo.png" alt="disaster logo" style="height: 60px;">
             UMconnect
           </h5>
           <div class="bi bi-geo-alt-fill mt-4"><span style="margin-left: 10px; font-weight: bold;">DAVAO CITY 800, Davao
@@ -161,6 +124,6 @@
     </div>
   </div>
 </body>
-<script src="js/bootstrap.js"></script>
+<script src="../Bootstrap/js/bootstrap.js"></script>
 
 </html>

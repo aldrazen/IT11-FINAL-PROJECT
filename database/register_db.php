@@ -16,13 +16,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $check_result = mysqli_query($connection, $check);
     if(mysqli_num_rows($check_result) > 0){
       echo
-      "<script> alert('Enter your correct id or email!'); window.location.href = 'register.php'; </script>";
+      "<script> alert('Enter your correct id or email!'); window.location.href = '../user/register.php'; </script>";
     }
     else{
       $register_query = "INSERT INTO tbl_student VALUES($student_id,'$student_email',$mobile_number,'$student_password','$first_name','$last_name','$course',$year_level)";
       $result = mysqli_query($connection, $register_query);
       echo
-      "<script> alert('Registered successfully!'); window.location.href = 'login.php';</script>";
+      "<script> alert('Registered successfully!'); window.location.href = '../user/index.php';</script>";
     }
 }
 ?>
