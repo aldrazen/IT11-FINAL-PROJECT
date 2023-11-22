@@ -38,9 +38,8 @@ if(isset($_SESSION['student_id'])){
             <a href="https://student.umindanao.edu.ph/login" target="_blank" class="nav-link p-3">Student Portal</a>
           </li>
           <li class="col col-md-auto d-flex">
-            <div class="nav-link navbar-text p-3">
-              Welcome, <?php echo $_SESSION['student_fname']?>!
-              <span> <a href="../session/logout.php" style="color: #be1206">logout?</a></span>
+            <div class="nav-link navbar-text p-3">Welcome, <?php echo $_SESSION['student_fname']?>!
+              <span> <a href="../session/user_logout.php" style="color: #be1206">logout?</a></span>
             </div>
           </li>
         </ul>
@@ -55,7 +54,7 @@ if(isset($_SESSION['student_id'])){
           <p class="card-title display-1 mb-0">UMconnect</p>
           <a class="btn btn-light " role="button" href="#info" style="letter-spacing: 5px;">LEARN MORE</a>
         </div>
-        <img src="images/dpt.jpg" class="card-img h-100" alt="">
+        <img src="../images/dpt.jpg" class="card-img h-100" alt="">
       </div>
     </div>
     <div class="container-xxl mt-5" id="info">
@@ -72,7 +71,7 @@ if(isset($_SESSION['student_id'])){
             ensuring that students are always in the know and well-connected with the institution.</p>
         </div>
         <div class="col-lg-6 my-lg-5">
-          <img class="img-thumbnail h-100 w-100" src="images/2016-07-12.jpg">
+          <img class="img-thumbnail h-100 w-100" src="../images/2016-07-12.jpg">
         </div>
       </div>
     </div>

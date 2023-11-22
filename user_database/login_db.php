@@ -12,9 +12,9 @@ if (isset($_POST['id']) && isset($_POST['password'])) {
     if (mysqli_num_rows($result) > 0) { 
       $row = mysqli_fetch_assoc($result);
       if ($student_password == $row['student_password']) { 
-        $_SESSION['student_fname'] = $row['student_fname'];
         $_SESSION['student_id'] = $row['student_id'];
-        header("Location: home.php");
+        $_SESSION['student_fname'] = $row['student_fname'];
+        header("Location: ../user/home.php");
       } else { 
         echo 
         "<script>alert('Your password is incorrect.'); window.location.href = '../user/index.php';</script>";
@@ -24,6 +24,6 @@ if (isset($_POST['id']) && isset($_POST['password'])) {
         "<script>alert('Account not registered.'); window.location.href = '../user/index.php';</script>";
       }
 } else {
-    header("Location: index.php");
+    header("Location: ../user/index.php");
 }
 ?>

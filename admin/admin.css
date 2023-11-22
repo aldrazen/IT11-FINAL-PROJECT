@@ -1,5 +1,6 @@
-body{
+.admin-page{
   padding-left: 183px;
+  background-color: #DAD8D6;
 }
 .sidebar{
   position: fixed;
@@ -8,9 +9,40 @@ body{
   right: 0;
   top: 0;
 }
+.um-logo {
+  height: 50px;
+}
+.nav-item{
+  font-weight: bold;
+}
 .nav-item button{
   color: black;
 }
 .nav-item button:hover{
   background-color: #FFC107;
+}
+.navbar-text {
+  font-weight: bold;
+}
+#img-bg {
+  background-image: url(../images/dpt.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+.form-label {
+  color: white;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+}
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  min-width: 0.8rem;
+}
+
+@media (min-width: 576px) {
+  .table-responsive {
+    overflow-x: visible;
+  }
 }

@@ -47,7 +47,7 @@
               <p class="card-subtitle">Join us shaping a more informed and connected campus community today.</p>
             </div>
             <div class="col-lg-6">
-              <form action="../database/register_db.php" method="POST">
+              <form action="../user_database/register_db.php" method="POST">
                 <div class="row">
                   <h1 class="mb-3" style="color: rgb(199, 131, 5); font-weight: bold;">Create New Account</h1>
                   <div class="col">

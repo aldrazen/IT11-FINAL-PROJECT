@@ -48,7 +48,7 @@
             </div>
             <div class="col-lg-4">
               <h1 class="mt-sm-4" style="color: rgb(199, 131, 5); font-weight: bold;">Welcome back, Ga!</h1>
-              <form action="../database/login_db.php" method="POST">
+              <form action="../user_database/login_db.php" method="POST">
                 <div class="form-outline">
                   <label for="id" class="form-label px-2 mt-3">School ID</label>
                   <input type="number" class="form-control rounded-5" name="id" id="id" required>

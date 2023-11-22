@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(isset($_SESSION['admin_ID'])){
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,37 +12,34 @@
   <link rel="icon" type="images/x-icon" href="../icons/University_of_Mindanao_Logo.png">
   <link rel="stylesheet" href="../Bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="../styles/header.css">
-  <link rel="stylesheet" href="../styles/content.css">
   <link rel="stylesheet" href="admin.css">
-  <style>
-
-  </style>
 </head>
 
-<body>
-  <nav class="container-fluid flex-wrap flex-md-nowrap sidebar" aria-label="Sidebar">
+<body class="admin-page">
+  <nav class="container-fluid flex-wrap flex-md-nowrap sidebar z-1" aria-label="Sidebar">
     <div class=" row flex-nowrap">
-      <div class="col-auto min-vh-100" style="background-color:#F6F8FC;">
+      <div class="col-auto min-vh-100 " style="background-color:#F6F8FC;">
         <div class="py-3">
           <a href="" class="navbar-brand d-flex justify-content-center">
             <img class="um-logo " src="../icons/logo-transparent.png" alt="Logo" />
           </a>
-          <ul class="nav nav-pills flex-column mt-5">
-            <li class="nav-item py-3">
-              <a href="admin.php" class="nav-link active bg-warning text-black" aria-current="page">
-                <i class="fs-4 bi-house"></i><span class="fs-5 ms-3">Home</span>
-              </a>
-            </li>
-            <li class="nav-item py-3">
-              <button type="button" class="btn nav-link text-black" data-bs-toggle="modal" data-bs-target="#Message"
-                data-bs-whatever="@mdo">
-                <i class="fs-4 bi-pencil"></i><span class="fs-5 ms-3">Compose</span>
-              </button>
-            </li>
-            <li class="nav-item">
-            </li>
-          </ul>
+          <div class="">
+            <ul class="nav nav-pills flex-column mt-5">
+              <li class="nav-item py-3">
+                <a href="admin.php" class="nav-link active bg-warning text-black" aria-current="page">
+                  <i class="fs-4 bi-house"></i><span class="fs-5 ms-3">Home</span>
+                </a>
+              </li>
+              <li class="nav-item py-3">
+                <button type="button" class="btn nav-link text-black" data-bs-toggle="modal" data-bs-target="#Message"
+                  data-bs-whatever="@mdo">
+                  <i class="fs-4 bi-pencil"></i><span class="fs-5 ms-3">Compose</span>
+                </button>
+              </li>
+              <li class="nav-item">
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -75,16 +76,15 @@
       <div class="d-flex align-items-center h-25">
         <div class="container text-center">
           <h1 class="mb-5 display-5 text-black" style="font-weight: bold;">List of students</h1>
-
           <table class="table table-hover mt-4">
             <thead>
               <tr>
-                <th>ID</th>
-                <th>DATE</th>
-                <th>DISASTER CATEGORY</th>
-                <th>DESCRIPTION</th>
-                <th>FATALITIES</th>
-                <th>LOCATION</th>
+                <th>Student ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Program</th>
+                <th>Level</th>
+                <th>Contact number</th>
               </tr>
             </thead>
           </table>
@@ -150,3 +150,8 @@
 <script src="../Bootstrap/js/bootstrap.js"></script>
 
 </html>
+<?php
+}else{
+  header("location: login.php");
+}
+?>
