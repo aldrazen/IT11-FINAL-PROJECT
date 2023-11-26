@@ -47,7 +47,7 @@ if(isset($_SESSION['admin_ID'])){
             <a href="admin_message.php" class="nav-link p-3">Compose Message</a>
           </li>
           <li class="col col-md-auto d-flex">
-            <div class="navbar-text p-3">Welcome, <?php echo $_SESSION['admin_username']?>!
+            <div class="navbar-text p-3">Welcome admin, <?php echo $_SESSION['admin_username']?>!
               <span> <a href="../session/admin_logout.php" style="color: #be1206">logout?</a></span>
             </div>
           </li>
@@ -56,12 +56,12 @@ if(isset($_SESSION['admin_ID'])){
     </div>
   </nav>
 
-  <div class="bg-img" id="img-bg">
+  <div class="bg-img" id="img-bg" style="height:91.5vh;">
     <div class="d-flex pt-5 h-100" style="background-color: rgba(0, 0, 0, 0.50);">
-      <div class="container py-5">
-        <div class="container mt-5 ">
+      <div class="container pt-5">
+        <div class="container mt-5 pt-5">
           <h1 class="mt-5 text-center" style="color: rgb(199, 131, 5); font-weight: bold;">REGISTERED STUDENTS</h1>
-          <table class="table table-responsive-lg font-weight-bold mt-5">
+          <table class="table table-responsive-lg font-weight-bold mt-3">
             <thead>
               <tr class="table-dark table-active">
                 <th>Student ID</th>

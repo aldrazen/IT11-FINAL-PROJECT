@@ -56,103 +56,77 @@ if(isset($_SESSION['admin_ID'])){
     </div>
   </nav>
 
-  <div class="container mt-5">
-    <div class="container">
-      <h1 class="text-center" style="color: rgb(199, 131, 5); font-weight: bold;">STUDENT LIST</h1>
-      <table class="table table-responsive-lg font-weight-bold mt-3">
-        <thead>
-          <tr class="table-dark table-active">
-            <th>Student ID</th>
-            <th>First tname</th>
-            <th>Last name</th>
-            <th>Program</th>
-            <th>Phone Number</th>
-            <th>Year Level</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
+  <div class="bg-img" id="img-bg" style="height:91.5vh;">
+    <div class="d-flex  h-100" style="background-color: rgba(0, 0, 0, 0.50);">
+      <div class="container mt-5 pt-5">
+        <h1 class="text-center mt-5 pt-5" style="color: rgb(199, 131, 5); font-weight: bold;">STUDENT LIST</h1>
+        <table class="table table-responsive-lg font-weight-bold mt-3">
+          <thead>
+            <tr class="table-dark table-active">
+              <th>Student ID</th>
+              <th>First tname</th>
+              <th>Last name</th>
+              <th>Program</th>
+              <th>Phone Number</th>
+              <th>Year Level</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
                 include 'modal.php';
                 include 'fetchdata.php';
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         ?>
-          <tr>
-            <td>
-              <?php echo $row['student_id']; ?>
-            </td>
+            <tr>
+              <td>
+                <?php echo $row['student_id']; ?>
+              </td>
 
-            <td>
-              <?php echo $row['student_fname']; ?>
-            </td>
-            <td>
-              <?php echo $row['student_lname']; ?>
-            </td>
-            <td>
-              <?php echo $row['student_course']; ?>
-            </td>
-            <td>
-              <?php echo $row['mobile_number']; ?>
-            </td>
-            <td>
-              <?php echo $row['student_yearrlevel']; ?>
-            </td>
-            <td><button type="button" class="btn btn-success open-sms-modal bi bi-envelope-arrow-down-fill"
-                data-studentid="<?php echo $row['student_id']; ?>"
-                data-phonenumber="<?php echo $row['mobile_number']; ?>">
-              </button>
-
-              <button type="button" class="btn btn-primary open-message bi bi-eye-fill" data-bs-toggle="modal"
-                data-bs-target="#viewModal">
-              </button>
-            </td>
-            <?php
+              <td>
+                <?php echo $row['student_fname']; ?>
+              </td>
+              <td>
+                <?php echo $row['student_lname']; ?>
+              </td>
+              <td>
+                <?php echo $row['student_course']; ?>
+              </td>
+              <td>
+                <?php echo $row['mobile_number']; ?>
+              </td>
+              <td>
+                <?php echo $row['student_yearrlevel']; ?>
+              </td>
+              <td><button type="button" class="btn btn-success open-sms-modal bi bi-envelope-arrow-down-fill"
+                  data-studentid="<?php echo $row['student_id']; ?>"
+                  data-phonenumber="<?php echo $row['mobile_number']; ?>">
+                </button>
+                <?php
                     }
                 } else {
                     echo "<tr><td colspan='6'>No data found</td></tr>";
                 }
                 $conn->close();
                 ?>
-        </tbody>
-      </table>
-      <div class="d-grid justify-content-center">
-        <button type="button" class="btn btn-primary open-groupsms-modal bi bi-people-fill"> Group Message
-        </button>
+          </tbody>
+        </table>
+        <div class="d-flex justify-content-center mt-4">
+          <div class="px-3">
+            <button type="button" class="btn btn-success open-groupsms-modal bi bi-people-fill"> Group Message
+            </button>
+            <button type="button" class="btn btn-primary bi bi-chat-right-dots-fill" data-bs-toggle="modal"
+              data-bs-target="#viewModal"> Message History
+            </button>
+            <?php 
+          include 'viewModal.php';
+        ?>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="container mt-5 text-center">
-      <h1 style="color: rgb(199, 131, 5); font-weight: bold;">MESSAGE HISTORY</h1>
-      <table class="table text-center table-responsive-sm font-weight-bold mt-3">
-        <thead>
-          <tr class="table-dark table-active">
-            <th>Student ID</th>
-            <th>Message</th>
-            <th>Stat</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-                include 'fetchdata.php';
-                if ($result->num_rows > 0) {
-                    while ($row = $result_messages->fetch_assoc()) {
-                        echo "<tr>";
-                        echo "<td>" . $row['studentID'] . "</td>";
-                        echo "<td>" . $row['msg'] . "</td>";
-                        echo "<td class='bg-success rounded text-white'>" . $row['stat'] . "</td>";
-                        $dateDelivered = isset($row['dateDelivered']) ? date("F j, Y", strtotime($row['dateDelivered'])) : '';
-                        echo "<td>" . $dateDelivered . "</td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='6'>No data found</td></tr>";
-                }
-                $conn->close();
-                ?>
-        </tbody>
-      </table>
+
     </div>
   </div>
 
