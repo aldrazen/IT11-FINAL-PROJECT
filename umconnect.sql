@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2023 at 08:11 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: Nov 26, 2023 at 04:07 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,13 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `messagetbl`
+--
+
+CREATE TABLE `messagetbl` (
+  `messageID` int(11) NOT NULL,
+  `studentID` int(11) NOT NULL,
+  `msg` text NOT NULL,
+  `stat` text NOT NULL,
+  `dateDelivered` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_student`
 --
 
 CREATE TABLE `tbl_student` (
   `student_id` int(8) NOT NULL,
   `student_email` varchar(50) NOT NULL,
-  `mobile_number` varchar(11) NOT NULL,
+  `mobile_number` varchar(20) NOT NULL,
   `student_password` varchar(20) NOT NULL,
   `student_fname` varchar(100) NOT NULL,
   `student_lname` varchar(100) NOT NULL,
@@ -43,17 +57,19 @@ CREATE TABLE `tbl_student` (
 --
 
 INSERT INTO `tbl_student` (`student_id`, `student_email`, `mobile_number`, `student_password`, `student_fname`, `student_lname`, `student_course`, `student_yearrlevel`) VALUES
-(1738, 'edsheeran@gmail.com', '9091013645', 'password123', 'ed', 'sheeran', 'BSIT', 3),
-(5150, 'swaelee@gmail.com', '9091013645', 'password', 'swae', 'lee', 'BSIT', 3),
-(12345, 'test@umindanao.edu.ph', '096642069', 'uwuwuuwu', '', '0', '0', 0),
-(51515, 'khalid@gmail.com', '9091013645', 'passwordd', 'khalid', 'location', 'BSIT', 2),
-(123456, 'ewqewqewq@gmail.com', '0909054555', 'localhero123', '', '0', '0', 0),
-(531681, 'a.sagarino.531681@umindanao.edu.ph', '09091013645', 'localhero123', '', '0', '0', 0),
-(531714, 'l.lao.531714@umindanao.edu.ph', '09184956237', 'Keyboardist', '', '0', '0', 0);
+(505181, 'hello@hotmail.com', '639854674562', 'hello123', 'Gina', 'Non', 'BSIT', 3),
+(525069, 'r.gudito.525069@umindanao.edu.ph', '639912947228', 'hello123', 'Ryann', 'Gudito', 'BSIT', 3);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `messagetbl`
+--
+ALTER TABLE `messagetbl`
+  ADD PRIMARY KEY (`messageID`),
+  ADD KEY `studentID` (`studentID`);
 
 --
 -- Indexes for table `tbl_student`
@@ -61,6 +77,26 @@ INSERT INTO `tbl_student` (`student_id`, `student_email`, `mobile_number`, `stud
 ALTER TABLE `tbl_student`
   ADD PRIMARY KEY (`student_id`),
   ADD UNIQUE KEY `student_email` (`student_email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `messagetbl`
+--
+ALTER TABLE `messagetbl`
+  MODIFY `messageID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `messagetbl`
+--
+ALTER TABLE `messagetbl`
+  ADD CONSTRAINT `messagetbl_ibfk_1` FOREIGN KEY (`studentID`) REFERENCES `tbl_student` (`student_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
