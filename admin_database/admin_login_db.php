@@ -14,7 +14,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
       if ($admin_password == $row['admin_password']) { 
         $_SESSION['admin_ID'] = $row['admin_ID']; 
         $_SESSION['admin_username'] = $row['admin_username'];
-        header("Location: ../admin/admin.php");
+        header("Location: ../admin/admin_home.php");
       } else { 
         echo 
         "<script>alert('Your password is incorrect.'); window.location.href = '../admin/login.php';</script>";

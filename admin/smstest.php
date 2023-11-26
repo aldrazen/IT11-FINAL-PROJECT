@@ -1,11 +1,9 @@
 <?php
-
 use Infobip\Api\SmsApi;
 use Infobip\Configuration;
 use Infobip\Model\SmsAdvancedTextualRequest;
 use Infobip\Model\SmsDestination;
 use Infobip\Model\SmsTextualMessage;
-
 
 require __DIR__ . '/../vendor/autoload.php';
 include "db_connection.php";
@@ -96,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "if (successMessages.length > 0) {";
         echo "  var alertMessage = 'SMS sent successfully:\\n' + successMessages.join('\\n');";
         echo "  alert(alertMessage);";
-        echo "  window.location.href = 'index.php';";
+        echo "  window.location.href = 'admin_message.php';";
         echo "}";
         echo "</script>";
     } catch (Throwable $apiException) {

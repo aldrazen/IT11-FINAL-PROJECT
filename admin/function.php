@@ -1,8 +1,6 @@
 <?php
-
 function getRecipientsForProgram($program)
 {
-
     include 'dbconnect.php';
     $studentIDs = [];
     $phoneNumbers = [];
@@ -17,7 +15,6 @@ function getRecipientsForProgram($program)
             $phoneNumbers[] = $row['mobile_numberr'];
         }
     }
-
     // Return the array of recipients
     return ['studentIDs' => $studentIDs, 'phoneNumbers' => $phoneNumbers];
 }

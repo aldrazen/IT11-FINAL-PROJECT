@@ -1,48 +1,33 @@
-.admin-page{
-  padding-left: 183px;
+body{
   background-color: #DAD8D6;
-}
-.sidebar{
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
 }
 .um-logo {
   height: 50px;
 }
-.nav-item{
-  font-weight: bold;
-}
-.nav-item button{
-  color: black;
-}
-.nav-item button:hover{
-  background-color: #FFC107;
-}
+
 .navbar-text {
   font-weight: bold;
+}
+.nav-item a:hover{
+color: #BE1206;
+}
+.nav-item {
+  font-weight: bold;
+  transition: background-color 0.15s;
+}
+.navbar-toggler:focus {
+  color: #be1206;
 }
 #img-bg {
   background-image: url(../images/dpt.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height:100vh;
 }
-.form-label {
-  color: white;
-  font-size: 20px;
-  font-family: 'Times New Roman', Times, serif;
-}
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-  min-width: 0.8rem;
+.active{
+color: red;
 }
 
-@media (min-width: 576px) {
-  .table-responsive {
-    overflow-x: visible;
-  }
-}
+
+
+
