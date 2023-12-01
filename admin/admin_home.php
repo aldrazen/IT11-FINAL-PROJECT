@@ -57,10 +57,9 @@ if(isset($_SESSION['admin_ID'])){
   </nav>
 
   <div class="bg-img" id="img-bg" style="height:91.5vh;">
-    <div class="d-flex pt-5 h-100" style="background-color: rgba(0, 0, 0, 0.50);">
-      <div class="container pt-5">
-        <div class="container mt-5 pt-5">
-          <h1 class="mt-5 text-center" style="color: rgb(199, 131, 5); font-weight: bold;">REGISTERED STUDENTS</h1>
+    <div class="d-flex h-100 justify-content-center align-items-center" style="background-color: rgba(0, 0, 0, 0.50);">
+        <div class="container">
+          <h1 class="text-center" style="color: rgb(199, 131, 5); font-weight: bold;">REGISTERED STUDENTS</h1>
           <table class="table table-responsive-lg font-weight-bold mt-3">
             <thead>
               <tr class="table-dark table-active">
@@ -112,7 +111,7 @@ if(isset($_SESSION['admin_ID'])){
                 ?>
             </tbody>
           </table>
-        </div>
+        
 
       </div>
     </div>

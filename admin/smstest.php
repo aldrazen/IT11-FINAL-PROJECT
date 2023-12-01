@@ -21,22 +21,33 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "here";
         $program = isset($_POST['course']) ? $_POST['course'] : '';
 
-        $studentIDs = [];
-        $phoneNumbers = [];
+ $studentIDs = [];
+$phoneNumbers = [];
 
-        $sql = "SELECT student_id, mobile_number FROM tbl_student WHERE student_course = '$program'";
-        $result = $conn->query($sql);
+$sql = "SELECT student_id, mobile_number FROM tbl_student WHERE student_course = '$program'";
+$result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
+if ($result->num_rows) {
+    while ($row = $result->fetch_assoc()) {
+        $studentIDs[] = $row['student_id'];
+        $phoneNumbers[] = $row['mobile_number'];
 
-            while ($row = $result->fetch_assoc()) {
-                $studentIDs[] = $row['student_id'];
-                $phoneNumbers[] = $row['mobile_number'];
-            }
-        }
+        // Process the current index values
+        var_dump($studentIDs);
+        echo "<br>";
+        var_dump($phoneNumbers);
 
-        // Set $sid and $RECIPIENTS to the retrieved values
-        $sid = implode(",", $studentIDs);
+        // Remove the first element from the arrays
+        array_shift($studentIDs);
+        array_shift($phoneNumbers);
+    }
+}
+
+// Set $sid and $RECIPIENTS to the retrieved values
+echo "Number of rows: " . $result->num_rows;
+$sid = implode(",", $studentIDs);
+
+        
         $RECIPIENTS = $phoneNumbers;
         $MESSAGE_TEXT = isset($_POST['groupmessage']) ? $_POST['groupmessage'] : '';
 
@@ -54,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     try {
         foreach ($RECIPIENTS as $RECIPIENT) {
             $RECIPIENT = trim($RECIPIENT);
+            echo"here";
             if (!empty($RECIPIENT)) {
                 // Save to the database
                 $sql = "INSERT INTO messagetbl (studentID, msg, stat, dateDelivered) VALUES ('$sid','$MESSAGE_TEXT','Pending', '$currentDate')";
@@ -94,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "if (successMessages.length > 0) {";
         echo "  var alertMessage = 'SMS sent successfully:\\n' + successMessages.join('\\n');";
         echo "  alert(alertMessage);";
-        echo "  window.location.href = 'admin_message.php';";
+        // echo "  window.location.href = 'admin_message.php';";
         echo "}";
         echo "</script>";
     } catch (Throwable $apiException) {

@@ -19,7 +19,7 @@
             <tbody>
               <?php
                 include 'fetchdata.php';
-                if ($result->num_rows > 0) {
+                if ($result_messages->num_rows > 0) {
                     while ($row = $result_messages->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $row['studentID'] . "</td>";
