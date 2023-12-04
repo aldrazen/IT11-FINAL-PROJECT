@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 use Infobip\Api\SmsApi;
 use Infobip\Configuration;
 use Infobip\Model\SmsAdvancedTextualRequest;
@@ -18,36 +21,26 @@ $SENDER = "Admin";
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (isset($_POST["groupsmsForm"])) {
-        echo "here";
+
         $program = isset($_POST['course']) ? $_POST['course'] : '';
 
- $studentIDs = [];
-$phoneNumbers = [];
+        $studentIDs = [];
+        $phoneNumbers = [];
 
-$sql = "SELECT student_id, mobile_number FROM tbl_student WHERE student_course = '$program'";
-$result = $conn->query($sql);
+        $sql = "SELECT student_id, mobile_number FROM tbl_student WHERE student_course = '$program'";
+        $result = $conn->query($sql);
 
-if ($result->num_rows) {
-    while ($row = $result->fetch_assoc()) {
-        $studentIDs[] = $row['student_id'];
-        $phoneNumbers[] = $row['mobile_number'];
+        if ($result->num_rows > 0) {
+            // Fetch the results and add them to the $recipients array
+            while ($row = $result->fetch_assoc()) {
+                $studentIDs[] = $row['student_id'];
+                $phoneNumbers[] = $row['mobile_number'];
+                var_dump($studentIDs);
+            }
+        }
 
-        // Process the current index values
-        var_dump($studentIDs);
-        echo "<br>";
-        var_dump($phoneNumbers);
-
-        // Remove the first element from the arrays
-        array_shift($studentIDs);
-        array_shift($phoneNumbers);
-    }
-}
-
-// Set $sid and $RECIPIENTS to the retrieved values
-echo "Number of rows: " . $result->num_rows;
-$sid = implode(",", $studentIDs);
-
-        
+        // Set $sid and $RECIPIENTS
+        $sid = implode(",", $studentIDs);
         $RECIPIENTS = $phoneNumbers;
         $MESSAGE_TEXT = isset($_POST['groupmessage']) ? $_POST['groupmessage'] : '';
 
@@ -65,48 +58,59 @@ $sid = implode(",", $studentIDs);
     try {
         foreach ($RECIPIENTS as $RECIPIENT) {
             $RECIPIENT = trim($RECIPIENT);
-            echo"here";
             if (!empty($RECIPIENT)) {
                 // Save to the database
-                $sql = "INSERT INTO messagetbl (studentID, msg, stat, dateDelivered) VALUES ('$sid','$MESSAGE_TEXT','Pending', '$currentDate')";
-                $insertResult = $conn->query($sql);
+                $sqlFetchStudentID = "SELECT student_id FROM tbl_student WHERE mobile_number = '$RECIPIENT'";
+                $resultFetchStudentID = $conn->query($sqlFetchStudentID);
 
-                if ($insertResult) {
-                    // send sms if insert to db is successful
-                    $destination = new SmsDestination(to: $RECIPIENT);
+                if ($resultFetchStudentID->num_rows > 0) {
+                    $row = $resultFetchStudentID->fetch_assoc();
+                    $studentID = $row['student_id'];
 
-                    $message = new SmsTextualMessage(
-                        destinations: [$destination],
-                        from: $SENDER,
-                        text: $MESSAGE_TEXT
-                    );
+                    // Save to the database
+                    $sql = "INSERT INTO messagetbl (studentID, msg, stat, dateDelivered) VALUES ('$studentID', '$MESSAGE_TEXT', 'Pending', '$currentDate')";
+                    $insertResult = $conn->query($sql);
 
-                    $request = new SmsAdvancedTextualRequest(messages: [$message]);
+                    if ($insertResult) {
+                        // Database insertion successful, proceed to send SMS
+                        $destination = new SmsDestination(to: $RECIPIENT);
 
-                    $smsResponse = $sendSmsApi->sendSmsMessage($request);
+                        $message = new SmsTextualMessage(
+                            destinations: [$destination],
+                            from: $SENDER,
+                            text: $MESSAGE_TEXT
+                        );
 
-                    echo 'Bulk ID: ' . $smsResponse->getBulkId() . PHP_EOL;
+                        $request = new SmsAdvancedTextualRequest(messages: [$message]);
 
-                    foreach ($smsResponse->getMessages() ?? [] as $message) {
-                        $messageId = $message->getMessageId();
-                        $status = $message->getStatus()?->getName();
+                        $smsResponse = $sendSmsApi->sendSmsMessage($request);
 
-                        $successMessages[] = sprintf('Message ID: %s, status: %s', $messageId, $status);
+                        echo 'Bulk ID: ' . $smsResponse->getBulkId() . PHP_EOL;
 
-                        // Update the status in db
-                        $sqlUpdate = "UPDATE messagetbl SET stat='Delivered' WHERE studentID='$sid' AND msg='$MESSAGE_TEXT'";
-                        $conn->query($sqlUpdate);
+                        foreach ($smsResponse->getMessages() ?? [] as $message) {
+                            $messageId = $message->getMessageId();
+                            $status = $message->getStatus()?->getName();
+
+                            $successMessages[] = sprintf('Message ID: %s, status: %s', $messageId, $status);
+
+                            // Update the status in the database using the correct studentID
+                            $sqlUpdate = "UPDATE messagetbl SET stat='Delivered' WHERE studentID='$studentID' AND msg='$MESSAGE_TEXT'";
+                            $conn->query($sqlUpdate);
+                        }
                     }
+                } else {
+                    // Handle the case where there is no matching student for the given phone number
+                    echo "<script>alert('Error: No matching student for phone number $RECIPIENT');</script>";
                 }
             }
         }
-        //success msg mf
+
         echo "<script>";
         echo "var successMessages = " . json_encode($successMessages) . ";";
         echo "if (successMessages.length > 0) {";
         echo "  var alertMessage = 'SMS sent successfully:\\n' + successMessages.join('\\n');";
         echo "  alert(alertMessage);";
-        // echo "  window.location.href = 'admin_message.php';";
+        echo "  window.location.href = 'index.php';";
         echo "}";
         echo "</script>";
     } catch (Throwable $apiException) {
