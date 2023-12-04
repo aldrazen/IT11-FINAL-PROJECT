@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            // Fetch the results and add them to the $recipients array
+            // Fetch the results 
             while ($row = $result->fetch_assoc()) {
                 $studentIDs[] = $row['student_id'];
                 $phoneNumbers[] = $row['mobile_number'];
@@ -67,12 +67,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $row = $resultFetchStudentID->fetch_assoc();
                     $studentID = $row['student_id'];
 
-                    // Save to the database
+
                     $sql = "INSERT INTO messagetbl (studentID, msg, stat, dateDelivered) VALUES ('$studentID', '$MESSAGE_TEXT', 'Pending', '$currentDate')";
                     $insertResult = $conn->query($sql);
 
                     if ($insertResult) {
-                        // Database insertion successful, proceed to send SMS
+                        // insert sms to db
                         $destination = new SmsDestination(to: $RECIPIENT);
 
                         $message = new SmsTextualMessage(
@@ -93,13 +93,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                             $successMessages[] = sprintf('Message ID: %s, status: %s', $messageId, $status);
 
-                            // Update the status in the database using the correct studentID
+                            // Update the status in the db
                             $sqlUpdate = "UPDATE messagetbl SET stat='Delivered' WHERE studentID='$studentID' AND msg='$MESSAGE_TEXT'";
                             $conn->query($sqlUpdate);
                         }
                     }
                 } else {
-                    // Handle the case where there is no matching student for the given phone number
                     echo "<script>alert('Error: No matching student for phone number $RECIPIENT');</script>";
                 }
             }
