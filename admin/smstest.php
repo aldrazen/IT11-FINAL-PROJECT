@@ -35,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             while ($row = $result->fetch_assoc()) {
                 $studentIDs[] = $row['student_id'];
                 $phoneNumbers[] = $row['mobile_number'];
-                var_dump($studentIDs);
             }
         }
 
@@ -107,14 +106,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<script>";
         echo "var successMessages = " . json_encode($successMessages) . ";";
         echo "if (successMessages.length > 0) {";
-        echo "  var alertMessage = 'SMS sent successfully:\\n' + successMessages.join('\\n');";
+        echo "  var alertMessage = 'SMS sent successfully';";
         echo "  alert(alertMessage);";
-        echo "  window.location.href = 'index.php';";
+        echo "  window.location.href = 'admin_message.php';";
+
         echo "}";
         echo "</script>";
     } catch (Throwable $apiException) {
         echo "<script>";
         echo "alert('Error sending SMS. HTTP Code: " . $apiException->getCode() . "');";
+        echo "  window.location.href = 'admin_message.php';";
         echo "</script>";
 
     }
